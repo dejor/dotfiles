@@ -1,0 +1,19 @@
+# install zplug
+export ZPLUG_HOME=~/.zsh/.zplug 
+[ ! -e $ZPLUG_HOME ] && mkdir ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME; 
+
+# check for dependencies (only works on arch)
+package_list=('neovim' 'neofetch' 'cowsay' 'fortune-mod' 'git' 'bat')
+for pgk in $package_list; do
+  pacman -Q $pgk >/dev/null || sudo pacman -S $pgk
+done
+
+# Base16 Shell
+[ -e "$HOME/.config/base16-shell" ] || git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+        # Sets Colorschema
+        base16_snazzy
