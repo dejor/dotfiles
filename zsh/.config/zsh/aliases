@@ -1,10 +1,22 @@
 # Custom aliases 
-alias p="sudo pacman"
-alias v="nvim"
-alias sv="sudo nvim"
-alias mkd="mkdir -v"
-alias ls="ls --color"
+alias mkd="mkdir -vp"
 alias cp="cp -i"
 
-(which lolcat >/dev/null) && alias cat="lolcat --freq=0.5 --spread=80"
+function setLsAliases(){
+  alias l="lsd -l"
+  alias la="lsd -la"
+  alias ls="lsd"
+  alias lsa="lsd -a"
+}
+function setParu(){
+  alias p="paru"
+}
+function setNvim(){
+  alias v="nvim"
+  alias sv="sudo nvim"
+}
+
+(which lsdd >/dev/null) && setLsAlias
+(which paru >/dev/null) && setParu
+(which nvim >/dev/null) && setNvim
 

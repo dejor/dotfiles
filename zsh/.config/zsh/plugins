@@ -4,6 +4,7 @@ source $ZPLUG_HOME/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
+
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -11,7 +12,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Install plugins if there are plugins that have not been installed
+# Install missing plugins
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -19,5 +20,5 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
+# Source plugins and add commands to $PATH
 zplug load 
