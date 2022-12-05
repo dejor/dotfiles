@@ -16,7 +16,7 @@ function setNvim(){
   alias sv="sudo nvim"
 }
 
-(which lsdd >/dev/null) && setLsAlias
+(which lsd >/dev/null) && setLsAlias
 (which paru >/dev/null) && setParu
 (which nvim >/dev/null) && setNvim
 
