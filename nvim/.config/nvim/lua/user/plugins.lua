@@ -42,9 +42,18 @@ packer.init({
 return packer.startup(function(use)
   use { "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" } -- Have packer manage itself
   use { "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" } -- Useful lua functions used by lots of plugins
+  use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" } -- dashboard
+  use { "folke/which-key.nvim" } -- show keybind compinations
+  use { "nvim-tree/nvim-tree.lua", tag = "nightly", requires = "nvim-tree/nvim-web-devicons" }
 
+  use { "windwp/nvim-autopairs", commit = "99f696339266c22e7313d6a85a95bd538c3fc226" }
+
+  use { "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons"} -- buffer / tab line
+  use { "nvim-lualine/lualine.nvim", requires = "nvim-tree/nvim-web-devicons"}
+
+  use { "moll/vim-bbye"}
   -- completion
-  use { "hrsh7th/nvim-cmp"}
+  use { "hrsh7th/nvim-cmp", tag = "v0.0.1" }
   use { "hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa"}
   use { "hrsh7th/cmp-path", commit ="91ff86cd9c29299a64f968ebb45846c485725f23"}
   use { "hrsh7th/cmp-cmdline", commit = "23c51b2a3c00f6abc4e922dbd7c3b9aca6992063"}
@@ -56,13 +65,28 @@ return packer.startup(function(use)
   use { "rafamadriz/friendly-snippets"}
 
   -- lsp 
-  use {"neovim/nvim-lspconfig"}
-  use {"williamboman/mason.nvim"}
+  use { "neovim/nvim-lspconfig", tag="v0.1.3"}
+  use { "williamboman/mason.nvim", commit = "2381f507189e3e10a43c3932a3ec6c2847180abc"}
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" } -- for text highlighting
 
   -- Colorschemes
-  use {'connorholyday/vim-snazzy', commit = "d979964b4dc0d6860f0803696c348c5a912afb9e" }
+  use { "connorholyday/vim-snazzy", commit = "d979964b4dc0d6860f0803696c348c5a912afb9e" }
+  use { "RRethy/nvim-base16"}
+
+  -- Telescope
+  use { "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} } }
+
+  -- Treesitter
+  use { "nvim-treesitter/nvim-treesitter",
+        run = function()
+          local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+          ts_update()
+        end,
+      }
+
+  -- git
+  use {"lewis6991/gitsigns.nvim", tag = "v0.5"}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

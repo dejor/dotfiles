@@ -1,6 +1,6 @@
 vim.cmd "colorscheme default"
 
-local colorscheme = "snazzy"
+local colorscheme = "base16-snazzy"
 
 if colorscheme == "snazzy" then
   vim.cmd "let g:SnazzyTransparent = 1"

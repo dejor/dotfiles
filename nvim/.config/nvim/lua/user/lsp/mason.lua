@@ -8,7 +8,7 @@ local servers = {
 --  "rustfmt",
 	"bashls",
 	-- "jsonls",
-	-- "yamlls",
+  "yamlls",
 }
 
 local settings = {
