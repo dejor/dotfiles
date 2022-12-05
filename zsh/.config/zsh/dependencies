@@ -2,16 +2,6 @@
 export ZPLUG_HOME=~/.zsh/.zplug 
 [ ! -e $ZPLUG_HOME ] && mkdir -pv ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME; 
 
-# Base16 Shell
-[ -e "$HOME/.base16-shell" ] || git clone https://github.com/chriskempson/base16-shell.git ~/.base16-shell
-
-BASE16_SHELL="$HOME/.base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-        # Sets Colorschema
-        base16_snazzy
-
 # check for dependencies (only works on arch)
 function installDependencies(){
   package_list=('neovim' 'neofetch' 'git' 'bat' 'lsd')

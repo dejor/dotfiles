@@ -5,6 +5,9 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"
 
+# base16-shell for color themes
+zplug chriskempson/base16-shell, from:github
+
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
@@ -22,3 +25,6 @@ fi
 
 # Source plugins and add commands to $PATH
 zplug load 
+
+# set color theme
+base16_snazzy
