@@ -48,6 +48,8 @@ return packer.startup(function(use)
 
   use { "windwp/nvim-autopairs", commit = "99f696339266c22e7313d6a85a95bd538c3fc226" }
 
+  use {"ahmedkhalf/project.nvim", commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4"}
+
   use { "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons"} -- buffer / tab line
   use { "nvim-lualine/lualine.nvim", requires = "nvim-tree/nvim-web-devicons"}
 
