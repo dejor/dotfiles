@@ -71,6 +71,9 @@ return packer.startup(function(use)
   use { "williamboman/mason.nvim", commit = "2381f507189e3e10a43c3932a3ec6c2847180abc"}
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" } -- for text highlighting
+  use { "glepnir/lspsaga.nvim", commit = "2eb8d023790099b182ac0c43d13dede80f42153e" } -- lsp ui
+
+  use { "ron-rs/ron.vim"}
 
   -- Colorschemes
   use { "connorholyday/vim-snazzy", commit = "d979964b4dc0d6860f0803696c348c5a912afb9e" }

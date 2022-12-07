@@ -51,6 +51,7 @@ M.setup = function()
 	})
 end
 
+
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
@@ -76,8 +77,12 @@ M.on_attach = function(client, bufnr)
 	end
 
 	lsp_keymaps(bufnr)
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
+	local saga_status_ok, saga = pcall(require, "user.lspsaga")
+	if saga_status_ok then
+    saga.lspsaga_keymaps(bufnr)
+	end
+	local illuminate_status_ok, illuminate = pcall(require, "illuminate")
+	if not illuminate_status_ok then
 		return
 	end
 	illuminate.on_attach(client)
