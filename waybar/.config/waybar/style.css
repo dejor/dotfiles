@@ -1,0 +1,121 @@
+@define-color foregroundColor #ffffff;
+@define-color backgroundColor #323232;
+@define-color accentColor #ff6ac1;
+@define-color red #ff5c57;
+@define-color green #5af78e;
+@define-color yellow #f3f99d;
+@define-color blue #57c7ff;
+@define-color magenta #ff6ac1;
+@define-color cyan #9aedfe;
+* {
+  font-family: "JetbrainsMono Nerd Font" ;
+	font-size: 12px;
+}
+
+window#waybar { 
+	  background: @backgroundColor;
+    color: @foregroundColor;    
+}
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+#window {
+	 color: #ffffff;
+   padding: 0px 10px 0px 10px;
+	 background-color: #285577;
+}
+
+window#waybar.empty #window {
+	background-color: transparent;
+	color: transparent;
+}
+
+window#waybar.empty {
+	background-color: #323232;
+}
+
+tooltip{
+  background: @backgroundColor;
+}
+
+.modules-left {
+	background-color: @backgroundColor;
+}
+
+
+.modules-right {
+	background-color: @backgroundColor;
+	padding: 0px 5px 0px 0px;
+}
+
+
+#custom-wallpaper {
+	background-color: @backgroundColor;
+	color: #b8b8b8;
+	padding: 0px 4px 0px 9px;
+}
+
+#custom-updater{
+	background-color: @backgroundColor;
+	color: #b8b8b8;
+	padding: 0px 9px 0px 9px;
+}
+
+
+#tags button {
+  border-radius: 0;
+	padding: 0px 12px;
+	color: #888888;
+}
+
+#tags button.occupied {
+	color: @foregroundColor;
+}
+
+#tags button.focused { 
+	background-color: @accentColor;
+  opacity: 0.8;
+	color: @foregroundColor;
+}
+
+
+
+
+#network, #temperature, #backlight, #pulseudio, #battery {
+    padding: 0px 15px 0px 15px;
+}
+    
+
+#clock {
+	margin: 0px 15px 0px 15px;
+}
+
+
+#tray{
+   padding: 0px 8px 0px 5px;
+   margin: 0px 5px 0px 5px;
+}
+
+@keyframes blink {
+    to {
+        background-color: @backgroundColor;
+        color: @red;
+    }
+}
+#battery.critical {
+  background-color: #ff5555;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+#network.disconnected {
+    color: #ff5555;
+}
+
+
+

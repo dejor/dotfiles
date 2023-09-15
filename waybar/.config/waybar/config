@@ -1,0 +1,105 @@
+{
+	"layer": "top",	
+	"position": "top",
+    "height": 27,
+
+
+    "modules-left": ["dwl/tags" ],
+    "modules-center": [],
+    "modules-right": ["custom/updater", "custom/wallpaper", "network", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+
+  "dwl/tags":{
+    "num-tags": 5,
+    "tag-labels": ["", "", "", "", ""]
+  },
+    "custom/updater":{
+        "format": "  {} Update(s)",
+        "exec": "checkupdates | wc -l",
+        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "alacritty -e paru -Syu && dunstify 'The system has been updated' ",
+        "tooltip": false
+    },
+    "custom/wallpaper":{
+        "format":" ",
+        "on-click": "bash ~/scripts/swww_random_wallpaper.bash",
+        "on-click-right": "bash ~/scripts/swww_init_time_of_day.sh",
+        "on-click-middle": "bash ~/scripts/swww_restart.bash",
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 15
+},
+
+
+    "clock": {
+        "format": "{:%a %b %e  %R}",
+        "interval": 30
+},
+
+    
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+              "full": 99,
+              "good": 98,
+              "normal": 98,
+              "warning": 20,
+              "critical": 20
+},
+
+        "format": "{icon}   {capacity}%",
+        "format-good": "{icon}   {capacity}%", 
+        "format-full": "   {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 30,
+        "on-click-right": "~/scripts/powermenu/powermenu.sh"
+},
+
+
+    "network": {
+        "interface": "wlp2s0", 
+        "format-wifi": "  {essid}",
+        "format-disconnected": "睊",
+        "interval": 60
+},
+
+
+    "temperature": {
+	   	"thermal-zone": 0,
+		"format": "{icon} {temperatureC}°C",
+		"format-icons":[""],
+		"interval": 30
+},
+
+
+	"backlight": {
+    	"device": "intel_backlight",
+    	"format": "{icon}  {percent}%  ",
+    	"format-icons": ["","","",""],
+    	"interval": 60,
+      "on-click": "~/scripts/start-stop-kanshi.sh",
+      "on-click-right": "wlay",
+},
+
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%  ",
+        "format-bluetooth": "  {volume}%  ",
+        "format-muted":"婢  Mute  ",
+        "interval": 60,
+
+        "format-icons": {
+        "default": [""]
+},
+            
+        "on-click": "pavucontrol",
+        "on-click-right": "~/scripts/bt_connect_sony.sh"
+
+
+}
+
+}
