@@ -42,7 +42,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Keep cursor centered
 keymap("n", "n", "nzzzv", opts)
 keymap("n", "N", "Nzzzv", opts)
-keymap("n", "N", "mzJ`z", opts)
+keymap("n", "J", "mzJ`z", opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode 

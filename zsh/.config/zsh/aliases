@@ -15,8 +15,12 @@ function setNvim(){
   alias v="nvim"
   alias sv="sudo nvim"
 }
+function setDoas(){
+  alias sudo="doas"
+}
 
 (which lsd >/dev/null) && setLsAliases
 (which paru >/dev/null) && setParu
 (which nvim >/dev/null) && setNvim
+(which doas >/dev/null) && setDoas
 

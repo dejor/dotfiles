@@ -125,11 +125,6 @@ M.lspsaga_keymaps = function(bufnr)
 	keymap(bufnr, "n", "<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	keymap(bufnr, "n", "<leader>lj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 	keymap(bufnr, "n", "<leader>lr", "<cmd>Lspsaga rename<cr>", opts)
-
-  -- Float terminal
-  keymap(bufnr, "n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", opts)
-  -- close floaterm
-  -- keymap(bufnr, "t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], opts)
 end
 
 return M
