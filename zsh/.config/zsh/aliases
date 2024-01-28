@@ -14,13 +14,24 @@ function setParu(){
 function setNvim(){
   alias v="nvim"
   alias sv="sudo nvim"
+  alias vim="nvim"
 }
 function setDoas(){
   alias sudo="doas"
+}
+function setFzf(){
+  alias vfzf='vim $(fzf)'
+  alias fzh="history 1 | fzf" 
+}
+function setManpager(){
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+  export MANROFFOPT="-c"
 }
 
 (which lsd >/dev/null) && setLsAliases
 (which paru >/dev/null) && setParu
 (which nvim >/dev/null) && setNvim
 (which doas >/dev/null) && setDoas
+(which fzf >/dev/null) && setFzf
+(which bat >/dev/null) && setManpager
 

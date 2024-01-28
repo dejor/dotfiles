@@ -5,7 +5,7 @@ export EDITOR=/usr/bin/nvim
 [ -e "$HOME/.config/zsh/config" ] && source "$HOME/.config/zsh/config"
 [ -e "$HOME/.config/zsh/aliases" ] && source "$HOME/.config/zsh/aliases"
 
-(which bat man >/dev/null) && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+[ -e "$HOME/scripts" ] && export "PATH=$HOME/scripts:$PATH"
 
 eval "$(starship init zsh)"
 
