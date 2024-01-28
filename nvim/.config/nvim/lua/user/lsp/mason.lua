@@ -2,7 +2,7 @@ local servers = {
 	"sumneko_lua",
 	-- "cssls",
 	-- "html",
-	-- "tsserver",
+  "tsserver",
 	"pyright",
   "rust_analyzer",
 --  "rustfmt",
@@ -10,6 +10,7 @@ local servers = {
 	-- "jsonls",
   "yamlls",
   "clangd",
+  "gopls",
 }
 
 local settings = {

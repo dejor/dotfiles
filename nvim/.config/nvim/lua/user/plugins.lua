@@ -40,8 +40,8 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-  use { "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" } -- Have packer manage itself
-  use { "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" } -- Useful lua functions used by lots of plugins
+  use { "wbthomason/packer.nvim", commit = "ea0cc3c"} -- Have packer manage itself
+  use { "nvim-lua/plenary.nvim", tag ="v0.1.4" } -- Useful lua functions used by lots of plugins
   use { "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" } -- dashboard
   use { "folke/which-key.nvim" } -- show keybind compinations
   use { "nvim-tree/nvim-tree.lua", tag = "nightly", requires = "nvim-tree/nvim-web-devicons" }
@@ -80,10 +80,10 @@ return packer.startup(function(use)
   use { "RRethy/nvim-base16"}
 
   -- Telescope
-  use { "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {'nvim-lua/plenary.nvim'} } }
+  use { "nvim-telescope/telescope.nvim", tag = "0.1.5", requires = { {'nvim-lua/plenary.nvim'} } }
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter",
+  use { "nvim-treesitter/nvim-treesitter", tag ="v0.9.1",
         run = function()
           local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
           ts_update()
@@ -93,6 +93,11 @@ return packer.startup(function(use)
   -- git
   use {"lewis6991/gitsigns.nvim", tag = "v0.5"}
 
+  -- show color codes
+  use {"NvChad/nvim-colorizer.lua"}
+
+  -- yuck filetype for eww
+  use {"https://github.com/elkowar/yuck.vim", commit = "9b5e0370f70cc30383e1dabd6c215475915fe5c3"}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

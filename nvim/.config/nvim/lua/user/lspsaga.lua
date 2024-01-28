@@ -23,7 +23,7 @@ local settings = {
   -- is function type it will have a param `entry`
   -- entry is a table type has these filed
   -- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
-  diagnostic_header = { " ", " ", " ", "ﴞ " },
+  diagnostic_header = { " ", " ", " ", "󰌵" },
   -- preview lines above of lsp_finder
   preview_lines_above = 0,
   -- preview lines of lsp_finder and definition preview
@@ -44,9 +44,9 @@ local settings = {
   },
   -- finder icons
   finder_icons = {
-    def = '  ',
-    ref = '諭 ',
-    link = '  ',
+    def = ' ',
+    ref = ' ',
+    link = ' ',
   },
   -- finder do lsp request timeout
   -- if your project big enough or your server very slow
