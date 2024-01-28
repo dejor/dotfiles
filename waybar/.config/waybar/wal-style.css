@@ -1,17 +1,7 @@
-@define-color foreground #e2e4e5;
-@define-color foregroundDark #a5a5a9;
-@define-color background #282a36;
-@define-color backgroundLight #34353e;
-@define-color accentColor #ff6ac1;
-@define-color green #5af78e;
-@define-color yellow #f3f99d;
-@define-color red #ff5c57;
-@define-color magenta #ff6ac1;
-@define-color blue #57c7ff;
-@define-color cyan #9aedfe;
- 
+@import '/home/dennis/.cache/wal/colors-waybar.css';
+
 * {
-  font-family: "Noto Sans Regular" ;
+  font-family: "Noto Sans Regular";
 	font-size: 12px;
 }
 
@@ -27,9 +17,8 @@ window#waybar.empty #window {
 
 #window {
    font-weight: 500;
-	 color: @backgroundLight;
+	 color: @foreground;
    padding: 0em 1em;
-	 background-color: @green;
 }
 
 tooltip, .modules-left, modules-right{
@@ -38,30 +27,22 @@ tooltip, .modules-left, modules-right{
 
 #workspaces button {
   border-radius: 0;
-  background-color: @background;
 	padding: 0em 1.2em;
-	color: @blue;
+	color: @color11;
   transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
 }
 
 #workspaces button.empty {
-	color: @foregroundDark;
-}
-
-#workspaces button.visible {
-	background-color: @blue;
-	color: @backgroundLight;
+  color: @cursor
 }
 
 #workspaces button.active {
-	background-color: @magenta;
-	color: @foreground;
+	background-color: @cursor;
+	color: @color11;
   transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
 #workspaces button.urgent {
-  background-color: @yellow;
-	color: @backgroundLight;
 }
 
 #temperature, #backlight, #pulseudio, #battery , #custom-logout, #custom-updater, #tray{
@@ -75,11 +56,11 @@ tooltip, .modules-left, modules-right{
 @keyframes blink {
     to {
         background-color: @background;
-        color: @red;
+        color: @color8;
     }
 }
 #battery.critical {
-  background-color: @red;
+  background-color: @color8;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -88,5 +69,5 @@ tooltip, .modules-left, modules-right{
 }
 
 #network.disconnected {
-    color: @red;
+    color: @color8;
 }
