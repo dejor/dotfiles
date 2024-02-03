@@ -1,16 +1,18 @@
 local servers = {
-	"lua_ls",
+	"bashls",
+  "clangd",
 	"cssls",
+  "dockerls",
+  "gopls",
 	"html",
-  "tsserver",
+  "helm_ls",
+	"jsonls",
+	"lua_ls",
+  "marksman",
 	"pyright",
   "rust_analyzer",
-	"bashls",
-	"jsonls",
+  "tsserver",
   "yamlls",
-  "clangd",
-  "gopls",
-  "dockerls",
 }
 
 local settings = {

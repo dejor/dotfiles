@@ -70,10 +70,11 @@ return packer.startup(function(use)
 
   -- lsp 
   use { "neovim/nvim-lspconfig", tag="v0.1.7"}
-  use { "williamboman/mason.nvim", commit = "2381f507189e3e10a43c3932a3ec6c2847180abc"}
-  use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
+  use { "williamboman/mason.nvim", tag = "v1.10.0"}
+  use { "williamboman/mason-lspconfig.nvim", tag = "v1.26.0"}
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" } -- for text highlighting
   use { "glepnir/lspsaga.nvim", commit = "2198c07124bef27ef81335be511c8abfd75db933" , requires = 'nvim-tree/nvim-web-devicons', config = function () require("user.lspsaga") end } -- lsp ui
+  use {"nvimtools/none-ls.nvim", commit = "d991c8952defd654ed78cce0abce63a5c06d0bc6", requires = "nvim-lua/plenary.nvim" } -- formatting
 
   use { "ron-rs/ron.vim"}
 

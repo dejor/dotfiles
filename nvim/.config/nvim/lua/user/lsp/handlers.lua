@@ -78,7 +78,6 @@ M.on_attach = function(client, bufnr)
 
 	lsp_keymaps(bufnr)
 	local saga_status_ok, saga = pcall(require, "user.lspsaga")
-  print(saga_status_ok)
 	if saga_status_ok then
     saga.lspsaga_keymaps(bufnr)
 	end
