@@ -3,123 +3,189 @@ if not status_ok then
   return
 end
 
-
-local settings = {
-  -- Options with default value
-  -- "single" | "double" | "rounded" | "bold" | "plus"
-  border_style = "single",
-  --the range of 0 for fully opaque window (disabled) to 100 for fully
-  --transparent background. Values between 0-30 are typically most useful.
-  saga_winblend = 0,
-  -- when cursor in saga window you config these to move
-  move_in_saga = { prev = '<C-p>',next = '<C-n>'},
-  -- Error, Warn, Info, Hint
-  -- use emoji like
-  -- { "🙀", "😿", "😾", "😺" }
-  -- or
-  -- { "😡", "😥", "😤", "😐" }
-  -- and diagnostic_header can be a function type
-  -- must return a string and when diagnostic_header
-  -- is function type it will have a param `entry`
-  -- entry is a table type has these filed
-  -- { bufnr, code, col, end_col, end_lnum, lnum, message, severity, source }
-  diagnostic_header = { " ", " ", " ", "󰌵" },
-  -- preview lines above of lsp_finder
-  preview_lines_above = 0,
-  -- preview lines of lsp_finder and definition preview
-  max_preview_lines = 10,
-  -- use emoji lightbulb in default
-  code_action_icon = "💡",
-  -- if true can press number to execute the codeaction in codeaction window
-  code_action_num_shortcut = true,
-  -- same as nvim-lightbulb but async
-  code_action_lightbulb = {
-      enable = true,
-      enable_in_insert = true,
-      cache_code_action = true,
-      sign = true,
-      update_time = 150,
-      sign_priority = 20,
-      virtual_text = true,
+local default_config = {
+  ui = {
+    border = 'rounded',
+    devicon = true,
+    foldericon = true,
+    title = true,
+    expand = '⊞',
+    collapse = '⊟',
+    code_action = '',
+    actionfix = ' ',
+    lines = { '┗', '┣', '┃', '━', '┏' },
+    kind = nil,
+    imp_sign = '󰳛 ',
   },
-  -- finder icons
-  finder_icons = {
-    def = ' ',
-    ref = ' ',
-    link = ' ',
+  hover = {
+    max_width = 0.9,
+    max_height = 0.8,
+    open_link = 'gx',
+    open_cmd = '!floorp',
   },
-  -- finder do lsp request timeout
-  -- if your project big enough or your server very slow
-  -- you may need to increase this value
-  finder_request_timeout = 1500,
-  finder_action_keys = {
-      open = {'o', '<CR>'},
-      vsplit = 's',
-      split = 'i',
-      tabe = 't',
-      quit = {'q', '<ESC>'},
-  },
-  code_action_keys = {
+  diagnostic = {
+    show_code_action = true,
+    show_layout = 'float',
+    show_normal_height = 10,
+    jump_num_shortcut = true,
+    max_width = 0.8,
+    max_height = 0.6,
+    max_show_width = 0.9,
+    max_show_height = 0.6,
+    text_hl_follow = true,
+    border_follow = true,
+    wrap_long_lines = true,
+    extend_relatedInformation = false,
+    diagnostic_only_current = false,
+    keys = {
+      exec_action = 'o',
       quit = 'q',
+      toggle_or_jump = '<CR>',
+      quit_in_show = { 'q', '<ESC>' },
+    },
+  },
+  code_action = {
+    num_shortcut = true,
+    show_server_name = false,
+    extend_gitsigns = false,
+    only_in_cursor = true,
+    max_height = 0.3,
+    keys = {
+      quit = { 'q', '<ESC>' },
       exec = '<CR>',
+    },
   },
-  definition_action_keys = {
-      edit = 'o',
+  lightbulb = {
+    enable = true,
+    sign = true,
+    debounce = 10,
+    sign_priority = 40,
+    virtual_text = true,
+    enable_in_insert = true,
+  },
+  scroll_preview = {
+    scroll_down = '<C-f>',
+    scroll_up = '<C-b>',
+  },
+  request_timeout = 2000,
+  finder = {
+    max_height = 0.5,
+    left_width = 0.4,
+    methods = {},
+    default = 'ref+imp',
+    layout = 'float',
+    silent = false,
+    filter = {},
+    fname_sub = nil,
+    sp_inexist = false,
+    sp_global = false,
+    ly_botright = false,
+    keys = {
+      shuttle = '[w',
+      toggle_or_open = 'o',
       vsplit = 's',
       split = 'i',
       tabe = 't',
+      tabnew = 'r',
       quit = 'q',
+      close = '<C-c>',
+    },
   },
-  rename_action_quit = '<C-c>',
-  rename_in_select = true,
-  -- show symbols in winbar must nightly
-  -- in_custom mean use lspsaga api to get symbols
-  -- and set it to your custom winbar or some winbar plugins.
-  -- if in_cusomt = true you must set in_enable to false
+  definition = {
+    width = 0.6,
+    height = 0.5,
+    save_pos = false,
+    keys = {
+      edit = '<C-o>',
+      vsplit = '<C-v>',
+      split = '<C-i>',
+      tabe = '<C-t>',
+      tabnew = '<C-n>',
+      quit = '<C-q>',
+      close = '<C-c>',
+    },
+  },
+  rename = {
+    in_select = true,
+    auto_save = false,
+    project_max_width = 0.5,
+    project_max_height = 0.5,
+    keys = {
+      quit = '<C-q>',
+      exec = '<CR>',
+      select = 'x',
+    },
+  },
   symbol_in_winbar = {
-      in_custom = false,
-      enable = true,
-      separator = ' ',
-      show_file = true,
-      -- define how to customize filename, eg: %:., %
-      -- if not set, use default value `%:t`
-      -- more information see `vim.fn.expand` or `expand`
-      -- ## only valid after set `show_file = true`
-      file_formatter = "",
-      click_support = false,
+    enable = true,
+    separator = ' › ',
+    hide_keyword = false,
+    ignore_patterns = nil,
+    show_file = true,
+    folder_level = 1,
+    color_mode = true,
+    dely = 300,
   },
-  -- show outline
-  show_outline = {
+  outline = {
     win_position = 'right',
-    --set special filetype win that outline window split.like NvimTree neotree
-    -- defx, db_ui
-    win_with = '',
     win_width = 30,
-    auto_enter = true,
     auto_preview = true,
-    virt_text = '┃',
-    jump_key = 'o',
-    -- auto refresh when change buffer
-    auto_refresh = true,
+    detail = true,
+    auto_close = true,
+    close_after_jump = false,
+    layout = 'normal',
+    max_height = 0.5,
+    left_width = 0.3,
+    keys = {
+      toggle_or_jump = 'o',
+      quit = 'q',
+      jump = 'e',
+    },
   },
-  -- custom lsp kind
-  -- usage { Field = 'color code'} or {Field = {your icon, your color code}}
-  custom_kind = {},
-  -- if you don't use nvim-lspconfig you must pass your server name and
-  -- the related filetypes into this table
-  -- like server_filetype_map = { metals = { "sbt", "scala" } }
-  server_filetype_map = {},
+  callhierarchy = {
+    layout = 'float',
+    left_width = 0.2,
+    keys = {
+      edit = 'e',
+      vsplit = 's',
+      split = 'i',
+      tabe = 't',
+      close = '<C-c>',
+      quit = '<C-q>',
+      shuttle = '[w',
+      toggle_or_req = 'u',
+    },
+  },
+  implement = {
+    enable = false,
+    sign = true,
+    lang = {},
+    virtual_text = true,
+    priority = 100,
+  },
+  beacon = {
+    enable = true,
+    frequency = 7,
+  },
+  floaterm = {
+    height = 0.7,
+    width = 0.7,
+  },
 }
 
-saga.init_lsp_saga(settings)
+saga.setup(default_config)
 
 M = {}
 
+---@diagnostic disable-next-line: duplicate-set-field
 M.lspsaga_keymaps = function(bufnr)
 	local opts = { noremap = true, silent = true }
+---@diagnostic disable-next-line: undefined-global
 	local keymap = vim.api.nvim_buf_set_keymap
 	keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
-	keymap(bufnr, "n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+	keymap(bufnr, "n", "gD", "<cmd>Lspsaga goto_definition<CR>", opts)
+	keymap(bufnr, "n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", opts)
+	keymap(bufnr, "n", "gT", "<cmd>Lspsaga goto_type_definition<CR>", opts)
 	keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	keymap(bufnr, "n", "<leader>la", "<cmd>Lspsaga code_action<cr>", opts)
 	keymap(bufnr, "n", "<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)

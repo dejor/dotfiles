@@ -50,11 +50,13 @@ return packer.startup(function(use)
 
   use {"ahmedkhalf/project.nvim", commit = "685bc8e3890d2feb07ccf919522c97f7d33b94e4"}
 
-  use { "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons"} -- buffer / tab line
+  use { "akinsho/bufferline.nvim", tag = "v4.*", requires = "nvim-tree/nvim-web-devicons"} -- buffer / tab line
   use { "nvim-lualine/lualine.nvim", requires = "nvim-tree/nvim-web-devicons"}
 
   use { "moll/vim-bbye"}
+
   -- completion
+  --
   use { "hrsh7th/nvim-cmp", tag = "v0.0.1" }
   use { "hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa"}
   use { "hrsh7th/cmp-path", commit ="91ff86cd9c29299a64f968ebb45846c485725f23"}
@@ -67,11 +69,11 @@ return packer.startup(function(use)
   use { "rafamadriz/friendly-snippets"}
 
   -- lsp 
-  use { "neovim/nvim-lspconfig", tag="v0.1.3"}
+  use { "neovim/nvim-lspconfig", tag="v0.1.7"}
   use { "williamboman/mason.nvim", commit = "2381f507189e3e10a43c3932a3ec6c2847180abc"}
   use { "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" }
   use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" } -- for text highlighting
-  use { "glepnir/lspsaga.nvim", commit = "2eb8d023790099b182ac0c43d13dede80f42153e" } -- lsp ui
+  use { "glepnir/lspsaga.nvim", commit = "2198c07124bef27ef81335be511c8abfd75db933" , requires = 'nvim-tree/nvim-web-devicons', config = function () require("user.lspsaga") end } -- lsp ui
 
   use { "ron-rs/ron.vim"}
 
@@ -83,7 +85,7 @@ return packer.startup(function(use)
   use { "nvim-telescope/telescope.nvim", tag = "0.1.5", requires = { {'nvim-lua/plenary.nvim'} } }
 
   -- Treesitter
-  use { "nvim-treesitter/nvim-treesitter", tag ="v0.9.1",
+  use { "nvim-treesitter/nvim-treesitter", tag ="v0.9.2",
         run = function()
           local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
           ts_update()
@@ -91,7 +93,7 @@ return packer.startup(function(use)
       }
 
   -- git
-  use {"lewis6991/gitsigns.nvim", tag = "v0.5"}
+  use {"lewis6991/gitsigns.nvim", tag = "v0.7"}
 
   -- show color codes
   use {"NvChad/nvim-colorizer.lua"}
