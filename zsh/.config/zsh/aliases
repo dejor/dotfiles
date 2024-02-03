@@ -34,4 +34,4 @@ function setManpager(){
 (which doas >/dev/null) && setDoas
 (which fzf >/dev/null) && setFzf
 (which bat >/dev/null) && setManpager
-
+alias ssh="TERM=xterm-256color ssh"

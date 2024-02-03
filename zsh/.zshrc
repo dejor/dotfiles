@@ -8,4 +8,3 @@ export EDITOR=/usr/bin/nvim
 [ -e "$HOME/scripts" ] && export "PATH=$HOME/scripts:$PATH"
 
 eval "$(starship init zsh)"
-
