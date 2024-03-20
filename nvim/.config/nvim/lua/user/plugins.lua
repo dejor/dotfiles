@@ -101,6 +101,8 @@ return packer.startup(function(use)
 
   -- yuck filetype for eww
   use {"https://github.com/elkowar/yuck.vim", commit = "9b5e0370f70cc30383e1dabd6c215475915fe5c3"}
+  -- earthly syntax highlighting
+  use {"https://github.com/earthly/earthly.vim"}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
