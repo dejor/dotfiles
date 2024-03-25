@@ -21,8 +21,11 @@ function setDoas(){
 }
 function setFzf(){
   alias vfzf='vim $(fzf)'
-  alias fzh="history 1 | fzf" 
+  alias fzh="history -1 1 | fzf | sed 's/^[ \t]*//' | cut -d' ' -f2-" 
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
 }
+
 function setManpager(){
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   export MANROFFOPT="-c"
